@@ -15,6 +15,6 @@ namespace PrimeNumbersTable.Web.Models
         }
 
         public int TotalOfPrimeNumbers { get; private set; }
-        public int[] ListOfPrimeNumbers { get; private set; }
+        public int[] ListOfPrimeNumbers { get; set; }
     }
 }

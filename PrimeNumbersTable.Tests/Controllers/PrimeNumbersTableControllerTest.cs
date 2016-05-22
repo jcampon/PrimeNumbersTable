@@ -3,9 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Web.Mvc;
+using Moq;
 using NUnit.Framework;
 using PrimeNumbersTable.Web;
 using PrimeNumbersTable.Web.Controllers;
+using PrimeNumbersTable.Web.Domain.Services;
 using PrimeNumbersTable.Web.Models;
 
 namespace PrimeNumbersTable.Tests.Controllers
@@ -13,15 +15,19 @@ namespace PrimeNumbersTable.Tests.Controllers
     [TestFixture]
     public class PrimeNumbersTableControllerTest
     {
+        private Mock<IPrimeNumbersService> _primeNumbersServiceMock;
         private PrimeNumbersTableController _controller;
 
         private const int ValidProvidedNumberOfPrimes = 5;
         private const int MinimumRequiredNumberOfPrimes = 1;
 
         [SetUp]
-        public void SetUpTextFixture()
+        public void SetUpTestFixture()
         {
-            this._controller = new PrimeNumbersTableController();
+            this._primeNumbersServiceMock = new Mock<IPrimeNumbersService>();
+            SetUpGetListOfPrimeNumbersMethodForServiceMock(ValidProvidedNumberOfPrimes);
+
+            this._controller = new PrimeNumbersTableController(this._primeNumbersServiceMock.Object);
         }
 
         [Test]
@@ -47,9 +53,14 @@ namespace PrimeNumbersTable.Tests.Controllers
             Assert.That((result.Model as PrimeNumbersTableDisplayModel).TotalOfPrimeNumbers, Is.GreaterThanOrEqualTo(MinimumRequiredNumberOfPrimes));
         }
 
-
-
         #region private helper methods
+
+        private void SetUpGetListOfPrimeNumbersMethodForServiceMock(int totalOfNumbers)
+        {
+            var listOfNumbers = new int[totalOfNumbers];
+
+            this._primeNumbersServiceMock.Setup(x => x.GetListOfPrimeNumbers(totalOfNumbers)).Returns(listOfNumbers);
+        }
 
         private ViewResult ReturnViewResultForTheGenerateActionMethod()
         {
