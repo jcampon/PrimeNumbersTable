@@ -156,6 +156,8 @@
     <Compile Include="Models\PrimeNumbersTableDisplayModel.cs" />
     <Compile Include="Models\UserInputDisplayModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Utilities\BasicPrimeNumbersListGeneratorAlgorithm.cs" />
+    <Compile Include="Utilities\IPrimeNumbersListGeneratorAlgorithm.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
@@ -194,7 +196,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Utilities\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
