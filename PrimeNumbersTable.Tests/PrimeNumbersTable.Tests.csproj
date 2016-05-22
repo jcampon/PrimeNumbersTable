@@ -101,7 +101,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\PrimeNumbersTable.Web\PrimeNumbersTable.Web.csproj">
-      <Project>{AA16DF94-E8BA-44E8-8416-EF7D21E7B3CC}</Project>
+      <Project>{ac130c66-3dfe-4dd2-96d6-1b5cba8cd9d4}</Project>
       <Name>PrimeNumbersTable.Web</Name>
     </ProjectReference>
   </ItemGroup>
