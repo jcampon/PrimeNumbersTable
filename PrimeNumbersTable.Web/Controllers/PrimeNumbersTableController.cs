@@ -11,9 +11,11 @@ namespace PrimeNumbersTable.Web.Controllers
     {
 
         // GET: PrimeNumbersTable/Generate/5
-        public ActionResult Generate(int id)
+        public ActionResult Generate(int totalOfPrimeNumbers)
         {
-            return View(new PrimeNumbersTableDisplayModel());
+            var primeNumbersTableDisplayModel = new PrimeNumbersTableDisplayModel(totalOfPrimeNumbers);
+
+            return View(primeNumbersTableDisplayModel);
         }
     }
 }

@@ -15,7 +15,8 @@ namespace PrimeNumbersTable.Tests.Controllers
     {
         private PrimeNumbersTableController _controller;
 
-        private const int ValidNumberOfPrimes = 5;
+        private const int ValidProvidedNumberOfPrimes = 5;
+        private const int MinimumRequiredNumberOfPrimes = 1;
 
         [SetUp]
         public void SetUpTextFixture()
@@ -33,6 +34,7 @@ namespace PrimeNumbersTable.Tests.Controllers
             Assert.That(result, Is.Not.Null);
         }
 
+        [Test]
         public void the_generate_action_returns_a_view_result_with_a_valid_view_model()
         {
             // Act
@@ -40,6 +42,9 @@ namespace PrimeNumbersTable.Tests.Controllers
 
             // Assert
             Assert.That(result.Model, Is.InstanceOf(typeof(PrimeNumbersTableDisplayModel)));
+            Assert.That((result.Model as PrimeNumbersTableDisplayModel).ListOfPrimeNumbers, Is.Not.Null);
+            Assert.That((result.Model as PrimeNumbersTableDisplayModel).ListOfPrimeNumbers.Any, Is.True);
+            Assert.That((result.Model as PrimeNumbersTableDisplayModel).TotalOfPrimeNumbers, Is.GreaterThanOrEqualTo(MinimumRequiredNumberOfPrimes));
         }
 
 
@@ -48,7 +53,7 @@ namespace PrimeNumbersTable.Tests.Controllers
 
         private ViewResult ReturnViewResultForTheGenerateActionMethod()
         {
-            return this._controller.Generate(ValidNumberOfPrimes) as ViewResult;
+            return this._controller.Generate(ValidProvidedNumberOfPrimes) as ViewResult;
         }
 
         #endregion

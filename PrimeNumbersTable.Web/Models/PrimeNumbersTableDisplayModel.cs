@@ -8,6 +8,13 @@ namespace PrimeNumbersTable.Web.Models
 {
     public class PrimeNumbersTableDisplayModel
     {
-        public int[] ListOfPrimeNumbers { get; set; }
+        public PrimeNumbersTableDisplayModel(int totalOfPrimeNumbers)
+        {
+            this.TotalOfPrimeNumbers = totalOfPrimeNumbers;
+            this.ListOfPrimeNumbers = new int[totalOfPrimeNumbers];
+        }
+
+        public int TotalOfPrimeNumbers { get; private set; }
+        public int[] ListOfPrimeNumbers { get; private set; }
     }
 }
