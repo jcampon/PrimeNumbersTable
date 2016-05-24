@@ -5,10 +5,11 @@ using System.Web;
 using System.Web.Mvc;
 using PrimeNumbersTable.Web.Domain.Services;
 using PrimeNumbersTable.Web.Models;
+using StructureMap;
 
 namespace PrimeNumbersTable.Web.Controllers
 {
-    public class PrimeNumbersTableController : Controller
+    public partial class PrimeNumbersTableController : Controller
     {
         private readonly IPrimeNumbersService _primeNumbersService;
 
@@ -17,8 +18,8 @@ namespace PrimeNumbersTable.Web.Controllers
             this._primeNumbersService = primeNumbersService;
         }
 
-        // GET: PrimeNumbersTable/Generate/5
-        public ActionResult Generate(int totalOfPrimeNumbers)
+        // GET: /PrimeNumbersTable/Generate/5
+        public virtual ActionResult Generate(int totalOfPrimeNumbers)
         {
             var primeNumbersTableDisplayModel = new PrimeNumbersTableDisplayModel(totalOfPrimeNumbers)
             {

@@ -14,6 +14,18 @@ namespace PrimeNumbersTable.Web
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
             routes.MapRoute(
+                MVC.PrimeNumbersTable.Name,
+                "primenumberstable/generate/{totalOfPrimeNumbers}",
+                new
+                {
+                    controller = MVC.PrimeNumbersTable.Name,
+                    action = MVC.PrimeNumbersTable.ActionNames.Generate,
+                    totalOfPrimeNumbers = 10
+                }
+                //,new { totalOfPrimeNumbers = @"\d+" }
+            );
+
+            routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
                 defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }

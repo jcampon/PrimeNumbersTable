@@ -4,5 +4,15 @@
     ViewBag.Title = "Generate";
 }
 
-<h2>Generate</h2>
+<h3>Table of the first @Model.TotalOfPrimeNumbers prime numbers</h3>
 
+<table>
+    <tr>
+        @foreach (var primeNumber in Model.ListOfPrimeNumbers)
+        {
+            <td style="border: 1px solid silver; font-size: 0.7em;">
+                @primeNumber
+            </td>
+        }        
+    </tr>
+</table>
