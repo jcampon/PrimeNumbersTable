@@ -15,14 +15,14 @@
 // </copyright>
 // --------------------------------------------------------------------------------------------------------------------
 
-using PrimeNumbersTable.Web.App_Start;
+using PrimeNumbersTable.Web;
 
 using WebActivatorEx;
 
 [assembly: PreApplicationStartMethod(typeof(StructuremapMvc), "Start")]
 [assembly: ApplicationShutdownMethod(typeof(StructuremapMvc), "End")]
 
-namespace PrimeNumbersTable.Web.App_Start {
+namespace PrimeNumbersTable.Web {
 	using System.Web.Mvc;
 
     using Microsoft.Web.Infrastructure.DynamicModuleHelper;

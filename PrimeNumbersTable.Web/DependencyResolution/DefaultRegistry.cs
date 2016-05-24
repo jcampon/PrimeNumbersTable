@@ -15,6 +15,10 @@
 // </copyright>
 // --------------------------------------------------------------------------------------------------------------------
 
+using PrimeNumbersTable.Web.Domain.Repositories;
+using PrimeNumbersTable.Web.Domain.Services;
+using PrimeNumbersTable.Web.Utilities;
+
 namespace PrimeNumbersTable.Web.DependencyResolution {
     using StructureMap.Configuration.DSL;
     using StructureMap.Graph;
@@ -29,7 +33,8 @@ namespace PrimeNumbersTable.Web.DependencyResolution {
                     scan.WithDefaultConventions();
 					scan.With(new ControllerConvention());
                 });
-            //For<IExample>().Use<Example>();
+            
+            For<IPrimeNumbersListGeneratorAlgorithm>().Use<BasicPrimeNumbersListGeneratorAlgorithm>();
         }
 
         #endregion

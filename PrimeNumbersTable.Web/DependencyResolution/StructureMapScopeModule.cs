@@ -1,7 +1,7 @@
 namespace PrimeNumbersTable.Web.DependencyResolution {
     using System.Web;
 
-    using PrimeNumbersTable.Web.App_Start;
+    using PrimeNumbersTable.Web;
 
     using StructureMap.Web.Pipeline;
 

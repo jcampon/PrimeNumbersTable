@@ -11,7 +11,7 @@ namespace PrimeNumbersTable.Web.Domain.Services
         int[] GetListOfPrimeNumbers(int totalOfPrimeNumbers);
     }
 
-    public class PrimeNumbersService
+    public class PrimeNumbersService : IPrimeNumbersService
     {
         private IPrimeNumbersRepository _repository;
 
