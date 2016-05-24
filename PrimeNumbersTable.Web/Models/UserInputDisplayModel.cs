@@ -9,8 +9,9 @@ namespace PrimeNumbersTable.Web.Models
 {
     public class UserInputDisplayModel
     {
-        [Required(ErrorMessage = "You must provide an valid whole number greater or equal than 1.")]
+        [Required(ErrorMessage = "You must provide an valid whole number between 1 and 500" )]
         [DisplayName("Number of Prime Numbers to display")]
-        public int NumberOfPrimes { get; set; }
+        [Range(1, 500)]
+        public int TotalOfPrimeNumbers { get; set; }
     }
 }

@@ -6,13 +6,17 @@
 
 <div class="row" style="margin-top: 20px;">
 
-    @using (Html.BeginForm("Generate", "PrimeNumbersTable", FormMethod.Get))
+    @using (Html.BeginForm(MVC.PrimeNumbersTable.ActionNames.Generate, MVC.PrimeNumbersTable.Name, FormMethod.Get))
     {
+        
+
         <fieldset>
-            @Html.DisplayNameFor(x => x.NumberOfPrimes)
+            @Html.DisplayNameFor(x => x.TotalOfPrimeNumbers)
             <br />
-            @Html.TextBox("totalOfPrimeNumbers", Model.NumberOfPrimes)
+            @Html.EditorFor(m => m.TotalOfPrimeNumbers, Model.TotalOfPrimeNumbers)
             <input type="submit" value="Display table of prime numbers" />
+            <br/>
+            @Html.ValidationSummary()
         </fieldset>
     }
 
