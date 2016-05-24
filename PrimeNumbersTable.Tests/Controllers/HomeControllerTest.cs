@@ -32,7 +32,7 @@ namespace PrimeNumbersTable.Tests.Controllers
         }
 
         [Test]
-        public void the_generate_action_returns_a_view_result_with_a_valid_view_model()
+        public void the_index_action_returns_a_view_result_with_a_valid_view_model()
         {
             // Act
             var result = ReturnViewResultForTheIndexActionMethod();
