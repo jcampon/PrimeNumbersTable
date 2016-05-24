@@ -15,8 +15,6 @@
 // </copyright>
 // --------------------------------------------------------------------------------------------------------------------
 
-using PrimeNumbersTable.Web.Domain.Repositories;
-using PrimeNumbersTable.Web.Domain.Services;
 using PrimeNumbersTable.Web.Utilities;
 
 namespace PrimeNumbersTable.Web.DependencyResolution {

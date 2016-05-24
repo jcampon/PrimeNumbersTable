@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
-using PrimeNumbersTable.Web.Domain.Repositories;
+using PrimeNumbersTable.Web.Utilities;
 
 namespace PrimeNumbersTable.Web.Domain.Services
 {
@@ -13,16 +13,17 @@ namespace PrimeNumbersTable.Web.Domain.Services
 
     public class PrimeNumbersService : IPrimeNumbersService
     {
-        private IPrimeNumbersRepository _repository;
+        private readonly IPrimeNumbersListGeneratorAlgorithm _algorithm;
 
-        public PrimeNumbersService(IPrimeNumbersRepository repository)
+        public PrimeNumbersService(IPrimeNumbersListGeneratorAlgorithm algorithm)
         {
-            this._repository = repository;
+            //TODO: if we ever have more than one algorithm available then we could implement a factory to return the specific algorithm that we want
+            this._algorithm = algorithm;
         }
 
         public int[] GetListOfPrimeNumbers(int totalOfPrimeNumbers)
         {
-            return this._repository.GetListOfPrimeNumbers(totalOfPrimeNumbers);
+            return this._algorithm.GetListOfFirstNPrimeNumbers(totalOfPrimeNumbers);
         }
     }
 }
