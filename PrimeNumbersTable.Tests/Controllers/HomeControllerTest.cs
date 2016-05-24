@@ -40,7 +40,7 @@ namespace PrimeNumbersTable.Tests.Controllers
             // Assert
             Assert.That(result.Model, Is.Not.Null);
             Assert.That(result.Model, Is.InstanceOf(typeof(UserInputDisplayModel)));
-            Assert.That((result.Model as UserInputDisplayModel).NumberOfPrimes, Is.EqualTo(10));
+            Assert.That((result.Model as UserInputDisplayModel).TotalOfPrimeNumbers, Is.EqualTo(10));
         }
 
         #region private helper methods
