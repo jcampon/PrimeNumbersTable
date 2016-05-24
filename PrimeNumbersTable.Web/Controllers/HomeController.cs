@@ -11,7 +11,7 @@ namespace PrimeNumbersTable.Web.Controllers
     {
         public virtual ActionResult Index()
         {
-            var model = new UserInputDisplayModel() { NumberOfPrimes = 10 };
+            var model = new UserInputDisplayModel() { NumberOfPrimes = 10 }; // 10 prime numbers by default
 
             return View(model);
         }

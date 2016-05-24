@@ -4,8 +4,16 @@
     ViewBag.Title = "Home Page";
 }
 
-<div class="row">
+<div class="row" style="margin-top: 20px;">
 
-    
+    @using (Html.BeginForm("Generate", "PrimeNumbersTable", FormMethod.Get))
+    {
+        <fieldset>
+            @Html.DisplayNameFor(x => x.NumberOfPrimes)
+            <br />
+            @Html.TextBox("totalOfPrimeNumbers", Model.NumberOfPrimes)
+            <input type="submit" value="Display table of prime numbers" />
+        </fieldset>
+    }
 
 </div>

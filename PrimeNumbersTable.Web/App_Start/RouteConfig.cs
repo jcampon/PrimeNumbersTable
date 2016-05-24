@@ -19,8 +19,7 @@ namespace PrimeNumbersTable.Web
                 new
                 {
                     controller = MVC.PrimeNumbersTable.Name,
-                    action = MVC.PrimeNumbersTable.ActionNames.Generate,
-                    totalOfPrimeNumbers = 10
+                    action = MVC.PrimeNumbersTable.ActionNames.Generate
                 }
                 //,new { totalOfPrimeNumbers = @"\d+" }
             );
