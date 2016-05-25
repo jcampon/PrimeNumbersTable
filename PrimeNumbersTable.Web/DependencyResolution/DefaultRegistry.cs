@@ -16,6 +16,7 @@
 // --------------------------------------------------------------------------------------------------------------------
 
 using PrimeNumbersTable.Web.Utilities;
+using PrimeNumbersTable.Web.Utilities.Algorithms;
 
 namespace PrimeNumbersTable.Web.DependencyResolution {
     using StructureMap.Configuration.DSL;

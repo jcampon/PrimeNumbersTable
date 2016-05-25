@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace PrimeNumbersTable.Web.Utilities
+﻿namespace PrimeNumbersTable.Web.Utilities.Algorithms
 {
     public class BasicPrimeNumbersListGeneratorAlgorithm : IPrimeNumbersListGeneratorAlgorithm
     {

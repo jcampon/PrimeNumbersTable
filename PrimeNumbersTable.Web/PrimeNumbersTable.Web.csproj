@@ -173,8 +173,8 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>T4MVC.tt</DependentUpon>
     </Compile>
-    <Compile Include="Utilities\BasicPrimeNumbersListGeneratorAlgorithm.cs" />
-    <Compile Include="Utilities\IPrimeNumbersListGeneratorAlgorithm.cs" />
+    <Compile Include="Utilities\Algorithms\BasicPrimeNumbersListGeneratorAlgorithm.cs" />
+    <Compile Include="Utilities\Algorithms\IPrimeNumbersListGeneratorAlgorithm.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
@@ -218,6 +218,7 @@
     <None Include="T4MVC.tt.hooks.t4" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="App_Code\" />
     <Folder Include="App_Data\" />
   </ItemGroup>
   <ItemGroup>

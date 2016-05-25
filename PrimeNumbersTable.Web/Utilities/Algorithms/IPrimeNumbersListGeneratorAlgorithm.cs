@@ -1,8 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-
-namespace PrimeNumbersTable.Web.Utilities
+﻿namespace PrimeNumbersTable.Web.Utilities.Algorithms
 {
     public interface IPrimeNumbersListGeneratorAlgorithm
     {

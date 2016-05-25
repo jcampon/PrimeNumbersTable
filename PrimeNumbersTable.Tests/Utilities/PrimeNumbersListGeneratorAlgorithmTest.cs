@@ -8,6 +8,7 @@ using NUnit.Framework;
 using PrimeNumbersTable.Web;
 using PrimeNumbersTable.Web.Domain.Services;
 using PrimeNumbersTable.Web.Utilities;
+using PrimeNumbersTable.Web.Utilities.Algorithms;
 
 namespace PrimeNumbersTable.Tests.Utilities
 {
