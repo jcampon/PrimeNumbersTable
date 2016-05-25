@@ -4,15 +4,50 @@
     ViewBag.Title = "Generate";
 }
 
-<h3>Table of the first @Model.TotalOfPrimeNumbers prime numbers</h3>
+<div class="row">
 
-<table>
-    <tr>
-        @foreach (var primeNumber in Model.ListOfPrimeNumbers)
-        {
-            <td style="border: 1px solid silver; font-size: 0.7em;">
-                @primeNumber
+    <h3>Table of the first @Model.TotalOfPrimeNumbers prime numbers</h3>
+
+    <table style="text-align: right; border: 2px double black;">
+        <!-- First row here -->
+        <tr>
+            <!-- First cell, which is empty, here -->
+            <td style="border: 2px double black; font-size: 0.7em;">
+                &nbsp;&nbsp;&nbsp;
             </td>
-        }        
-    </tr>
-</table>
+
+            <!-- Successive cells, containing the whole array of prime numbers, goes here -->
+            @for (var i = 0; i < Model.TotalOfPrimeNumbers; i++)
+            {
+                <td style="border: 1px solid silver; border-bottom: 2px double black; border-top: 2px double black; font-size: 0.7em; font-weight: bold;">
+                    @Model.ListOfPrimeNumbers[i]
+                </td>
+            }
+        </tr>
+
+        <!-- Successive rows here -->
+
+        @for (var i = 0; i < Model.TotalOfPrimeNumbers; i++)
+        {
+            <tr>
+                <!-- First cell of each row, containing every number on the array of primes, goes here -->
+                <td style="border: 1px solid silver; border-right: 2px double black; border-left: 2px double black; font-size: 0.7em; font-weight: bold;">
+                    @Model.ListOfPrimeNumbers[i]
+                </td>
+
+                <!-- Successice cells of each row, which will contain ListOfPrimeNumbers[i] x ListOfPrimeNumbers[j], go here -->
+                @for (var j = 0; j < Model.TotalOfPrimeNumbers; j++)
+                {
+                    <td style="border: 1px solid silver; font-size: 0.7em;">
+                        @{
+                            var product = (Model.ListOfPrimeNumbers[i]*Model.ListOfPrimeNumbers[j]);
+                            @product
+                        }
+                    </td>
+                }
+            </tr>
+        }
+
+    </table>
+
+</div>
