@@ -1,16 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Web.Mvc;
-using Moq;
-using NUnit.Framework;
-using PrimeNumbersTable.Web;
-using PrimeNumbersTable.Web.Domain.Services;
-using PrimeNumbersTable.Web.Utilities;
+﻿using NUnit.Framework;
 using PrimeNumbersTable.Web.Utilities.Algorithms;
 
-namespace PrimeNumbersTable.Tests.Utilities
+namespace PrimeNumbersTable.Tests.Utilities.Algorithms
 {
     [TestFixture]
     public class when_working_with_the_basic_prime_numbers_list_generator_algorithm
