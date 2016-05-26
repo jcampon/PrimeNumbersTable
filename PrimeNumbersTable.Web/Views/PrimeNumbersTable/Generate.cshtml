@@ -1,50 +1,71 @@
-﻿@model PrimeNumbersTable.Web.Models.PrimeNumbersTableDisplayModel
+﻿@using PrimeNumbersTable.Web.Models
+@using PrimeNumbersTable.Web.Utilities.App_Code;
+@using PrimeNumbersTable.Web.Utilities;
+
+@model PrimeNumbersTable.Web.Models.PrimeNumbersTableDisplayModel
 
 @{
-    ViewBag.Title = "Generate";
+    ViewBag.Title = "Display";
 }
 
 <div class="row">
 
     <h3>Table of the first @Model.TotalOfPrimeNumbers prime numbers</h3>
 
-    <table style="font-size: 0.6em">
-        <!-- First row here -->
-        <tr>
-            <!-- First cell, which is empty, here -->
-            <td>
-                &nbsp;&nbsp;&nbsp;
-            </td>
-
-            <!-- Successive cells, containing the whole array of prime numbers, goes here -->
-            @for (var i = 0; i < Model.TotalOfPrimeNumbers; i++)
-            {
-                <td>
-                    <b>@Model.ListOfPrimeNumbers[i]</b>
-                </td>
-            }
-        </tr>
-
-        <!-- Successive rows here -->
-
-        @for (var i = 0; i < Model.TotalOfPrimeNumbers; i++)
-        {
-            <tr>
-                <!-- First cell of each row, containing every number on the array of primes, goes here -->
-                <td>
-                    <b>@Model.ListOfPrimeNumbers[i]</b>
-                </td>
-
-                <!-- Successice cells of each row, which will contain ListOfPrimeNumbers[i] x ListOfPrimeNumbers[j], go here -->
-                @for (var j = 0; j < Model.TotalOfPrimeNumbers; j++)
-                {
-                    <td>
-                        @(Model.ListOfPrimeNumbers[i] * Model.ListOfPrimeNumbers[j])
-                    </td>
-                }
-            </tr>
-        }
-
-    </table>
+    @RenderPrimeNumbersTable()
 
 </div>
+
+
+
+@helper RenderPrimeNumbersTable()
+{
+    <table style="font-size: 0.7em; text-align: right;">
+        <!-- Top row here -->
+        @RenderFirstRow()
+
+        <!-- Successive rows here -->
+        @for (var rowCount = 0; rowCount < Model.TotalOfPrimeNumbers; rowCount++)
+        {
+            @RenderRow(rowCount)
+        }
+    </table>
+}
+
+@helper RenderFirstRow()
+{
+    <tr>
+        <!-- First cell, which is empty, here -->
+        @RenderTopLeftCell()
+
+        <!-- Successive cells, containing the whole array of prime numbers, goes here -->
+        @for (var i = 0; i < Model.TotalOfPrimeNumbers; i++)
+        {
+            @RenderCellValue(Model.ListOfPrimeNumbers[i])
+        }
+    </tr>
+}
+
+@helper RenderRow(int rowCount)
+{
+    <tr>
+        <!-- First cell of each row, containing every number on the array of primes, goes here -->
+        @RenderCellValue(Model.ListOfPrimeNumbers[rowCount])
+
+        <!-- Successice cells of each row, which will contain the product of the primes, go here -->
+        @for (var colCount = 0; colCount < Model.TotalOfPrimeNumbers; colCount++)
+        {
+            @RenderCellValue(Model.ListOfPrimeNumbers[rowCount] * Model.ListOfPrimeNumbers[colCount])
+        }
+    </tr>
+}
+
+@helper RenderCellValue(int cellValue)
+{
+    <td>&nbsp;@cellValue</td>
+}
+
+@helper RenderTopLeftCell()
+{
+    <td>&nbsp;&nbsp;&nbsp;</td>
+}

@@ -175,7 +175,6 @@
     </Compile>
     <Compile Include="Utilities\Algorithms\BasicPrimeNumbersListGeneratorAlgorithm.cs" />
     <Compile Include="Utilities\Algorithms\IPrimeNumbersListGeneratorAlgorithm.cs" />
-    <Compile Include="Utilities\App_Code\PrimeNumbersTableDisplayHelper.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
@@ -186,7 +185,9 @@
     <Content Include="Content\Site.css" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
-    <Content Include="App_Code\PrimeNumbersTableDisplayHelper.cshtml" />
+    <Content Include="Views\Shared\Helpers\PrimeNumbersTableDisplayHelperTemplate.cshtml">
+      <Generator>RazorGenerator</Generator>
+    </Content>
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -212,11 +213,21 @@
       <DependentUpon>Web.config</DependentUpon>
     </Content>
     <Content Include="Views\Web.config" />
-    <Content Include="Views\_ViewStart.cshtml" />
-    <Content Include="Views\Shared\Error.cshtml" />
-    <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="Views\PrimeNumbersTable\Generate.cshtml" />
+    <Content Include="Views\_ViewStart.cshtml">
+      <Generator>RazorGenerator</Generator>
+    </Content>
+    <Content Include="Views\Shared\Error.cshtml">
+      <Generator>RazorGenerator</Generator>
+    </Content>
+    <Content Include="Views\Shared\_Layout.cshtml">
+      <Generator>RazorGenerator</Generator>
+    </Content>
+    <Content Include="Views\Home\Index.cshtml">
+      <Generator>RazorGenerator</Generator>
+    </Content>
+    <Content Include="Views\PrimeNumbersTable\Generate.cshtml">
+      <Generator>RazorGenerator</Generator>
+    </Content>
     <None Include="T4MVC.tt.hooks.t4" />
   </ItemGroup>
   <ItemGroup>
