@@ -1,11 +1,13 @@
 ﻿using System;
 using System.Linq;
 using System.Runtime.Remoting.Messaging;
+using NLog;
 
 namespace PrimeNumbersTable.Web.Utilities.Algorithms
 {
     public class BasicPrimeNumbersListGeneratorAlgorithm : IPrimeNumbersListGeneratorAlgorithm
     {
+        private static Logger _logger = LogManager.GetCurrentClassLogger();
         private static int _countOfPrimeNumbersAlreadyStored = 5;
         private static int[] _listOfFirstNPrimeNumbersAlreadyStored;
         public static int[] ListOfFirstNPrimeNumbersAlreadyStored
@@ -18,8 +20,12 @@ namespace PrimeNumbersTable.Web.Utilities.Algorithms
 
         public int[] GetListOfFirstNPrimeNumbers(int firsNPrimeNumbersToFind)
         {
+            var initialCountOfPrimeNumbersAlreadyStored = _countOfPrimeNumbersAlreadyStored;
+            _logger.Debug("Started generating the requested first {0} prime numbers", firsNPrimeNumbersToFind);
+
             if (firsNPrimeNumbersToFind <= _countOfPrimeNumbersAlreadyStored)
             {
+                _logger.Debug("Nothing recalculated. Returned cached data");
                 return ListOfFirstNPrimeNumbersAlreadyStored.Take(firsNPrimeNumbersToFind).ToArray();
             }
 
@@ -28,6 +34,9 @@ namespace PrimeNumbersTable.Web.Utilities.Algorithms
 
             SearchForPrimeNumbers(firsNPrimeNumbersToFind, lastSavedPrime);
 
+            _logger.Debug("Finished generating the next {0} prime numbers after {1}", 
+                        firsNPrimeNumbersToFind - initialCountOfPrimeNumbersAlreadyStored, 
+                        lastSavedPrime);
             return ListOfFirstNPrimeNumbersAlreadyStored;
         }
 

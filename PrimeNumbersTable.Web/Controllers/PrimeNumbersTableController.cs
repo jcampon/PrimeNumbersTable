@@ -5,6 +5,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using Microsoft.Ajax.Utilities;
+using NLog;
 using PrimeNumbersTable.Web.Domain.Services;
 using PrimeNumbersTable.Web.Models;
 using StructureMap;
@@ -14,6 +15,7 @@ namespace PrimeNumbersTable.Web.Controllers
     public partial class PrimeNumbersTableController : Controller
     {
         private readonly IPrimeNumbersService _primeNumbersService;
+        private static Logger _logger = LogManager.GetCurrentClassLogger();
 
         private int BiggestInputNumberAllowed = GetBiggestInputNumberAllowed();
 
@@ -29,11 +31,13 @@ namespace PrimeNumbersTable.Web.Controllers
 
             if (ModelState.IsValid)
             {
+                _logger.Debug("Creating the PrimeNumbersTableDisplayModel in the controller");
                 var primeNumbersTableDisplayModel = new PrimeNumbersTableDisplayModel(totalOfPrimeNumbers)
                 {
                     ListOfPrimeNumbers = this._primeNumbersService.GetListOfPrimeNumbers(totalOfPrimeNumbers)
                 };
 
+                _logger.Debug("Returning the Generate view");
                 return View(primeNumbersTableDisplayModel);
             }
 
