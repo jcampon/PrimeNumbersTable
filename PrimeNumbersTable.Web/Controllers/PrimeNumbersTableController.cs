@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -13,15 +14,15 @@ namespace PrimeNumbersTable.Web.Controllers
     public partial class PrimeNumbersTableController : Controller
     {
         private readonly IPrimeNumbersService _primeNumbersService;
-        
-        private const int BiggestInputNumberAllowed = 500; //TODO: set this value up in web.config and read it from there
+
+        private int BiggestInputNumberAllowed = GetBiggestInputNumberAllowed();
 
         public PrimeNumbersTableController(IPrimeNumbersService primeNumbersService)
         {
             this._primeNumbersService = primeNumbersService;
         }
 
-        //[AcceptVerbs("Get", "Post")]
+        [OutputCache(Duration = 30, VaryByParam = "totalOfPrimeNumbers")]
         public virtual ActionResult Generate(int totalOfPrimeNumbers)
         {
             ValidateInput(totalOfPrimeNumbers);
@@ -46,6 +47,19 @@ namespace PrimeNumbersTable.Web.Controllers
                 ModelState.AddModelError(MVC.PrimeNumbersTable.GenerateParams.totalOfPrimeNumbers, 
                                          "Error: the value provided must be a number between 1 and " + BiggestInputNumberAllowed);
             }
+        }
+
+        private static int GetBiggestInputNumberAllowed()
+        {
+            var biggestInputValue = 1;
+
+            if (!string.IsNullOrEmpty(ConfigurationManager.AppSettings["BiggestInputNumberAllowed"]))
+            {
+                if(!int.TryParse(ConfigurationManager.AppSettings["BiggestInputNumberAllowed"], out biggestInputValue))
+                    throw new ConfigurationErrorsException("The default value for 'BiggestInputNumberAllowed' is missing or incorrect on web.config");
+            }
+
+            return biggestInputValue;
         }
     }
 }
