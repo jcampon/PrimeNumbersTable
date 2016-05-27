@@ -1,37 +1,68 @@
-﻿namespace PrimeNumbersTable.Web.Utilities.Algorithms
+﻿using System;
+using System.Linq;
+using System.Runtime.Remoting.Messaging;
+
+namespace PrimeNumbersTable.Web.Utilities.Algorithms
 {
     public class BasicPrimeNumbersListGeneratorAlgorithm : IPrimeNumbersListGeneratorAlgorithm
     {
-        public int[] GetListOfFirstNPrimeNumbers(int firsNPrimeNumbers)
+        private static int _countOfPrimeNumbersAlreadyStored = 5;
+        private static int[] _listOfFirstNPrimeNumbersAlreadyStored;
+        public static int[] ListOfFirstNPrimeNumbersAlreadyStored
         {
-            var listOfFirstNPrimeNumbers = new int[firsNPrimeNumbers];
+            get {
+                return _listOfFirstNPrimeNumbersAlreadyStored ??
+                       (_listOfFirstNPrimeNumbersAlreadyStored = new int[] {2, 3, 5, 7, 11});
+            }
+        }
 
-            // Special handling for the integer 2 which is the first prime
-            var countOfPrimesFoundAlready = 0;
-            listOfFirstNPrimeNumbers[countOfPrimesFoundAlready++] = 2;
+        public int[] GetListOfFirstNPrimeNumbers(int firsNPrimeNumbersToFind)
+        {
+            if (firsNPrimeNumbersToFind <= _countOfPrimeNumbersAlreadyStored)
+            {
+                return ListOfFirstNPrimeNumbersAlreadyStored.Take(firsNPrimeNumbersToFind).ToArray();
+            }
 
-            // Looping from 3, to the limit
-            for (var number = 3; countOfPrimesFoundAlready < firsNPrimeNumbers; number++)
+            var lastSavedPrime = ListOfFirstNPrimeNumbersAlreadyStored.Last();
+            ResizeListOfFirstNPrimeNumbers(firsNPrimeNumbersToFind);
+
+            SearchForPrimeNumbers(firsNPrimeNumbersToFind, lastSavedPrime);
+
+            return ListOfFirstNPrimeNumbersAlreadyStored;
+        }
+
+        private void ResizeListOfFirstNPrimeNumbers(int firsNPrimeNumbersToFind)
+        {
+            if (firsNPrimeNumbersToFind > ListOfFirstNPrimeNumbersAlreadyStored.Length)
+            {
+                Array.Resize(ref _listOfFirstNPrimeNumbersAlreadyStored, firsNPrimeNumbersToFind);
+            }
+        }
+
+        private void SearchForPrimeNumbers(int firsNPrimeNumbersToFind, int lastSavedPrime)
+        {
+            for (var number = lastSavedPrime + 1; _countOfPrimeNumbersAlreadyStored < firsNPrimeNumbersToFind; number++)
             {
                 var isPrime = true;
 
-                for (var i = 0; (number / listOfFirstNPrimeNumbers[i]) >= listOfFirstNPrimeNumbers[i]; i++)
+                for (var i = 0; (number/ListOfFirstNPrimeNumbersAlreadyStored[i]) >= ListOfFirstNPrimeNumbersAlreadyStored[i]; i++)
                 {
-                    if (number % listOfFirstNPrimeNumbers[i] == 0)
-                    {
-                        isPrime = false;
-                        break;
-                    }
+                    if (number % ListOfFirstNPrimeNumbersAlreadyStored[i] != 0) continue;
+                    isPrime = false;
+                    break;
                 }
 
-                // Store the prime number and increment the count
-                if (isPrime)
-                {
-                    listOfFirstNPrimeNumbers[countOfPrimesFoundAlready++] = number;
-                }
+                StoreNumberInArrayIfPrime(number, isPrime);
             }
+        }
 
-            return listOfFirstNPrimeNumbers;
+        private void StoreNumberInArrayIfPrime(int primeNumber, bool isPrime)
+        {
+            if (isPrime)
+            {
+                ListOfFirstNPrimeNumbersAlreadyStored[_countOfPrimeNumbersAlreadyStored++] = primeNumber;
+            }
         }
     }
+
 }

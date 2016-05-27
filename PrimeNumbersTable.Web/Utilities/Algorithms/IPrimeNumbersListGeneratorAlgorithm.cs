@@ -2,6 +2,6 @@
 {
     public interface IPrimeNumbersListGeneratorAlgorithm
     {
-        int[] GetListOfFirstNPrimeNumbers(int numberOfPrimeNumbers);
+        int[] GetListOfFirstNPrimeNumbers(int firsNPrimeNumbersToFind);
     }
 }
