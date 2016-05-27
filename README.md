@@ -35,16 +35,16 @@ In the above example the 2nd prime number is 3 and the 3rd prime number is 5. So
 
 * The implementation is an ASP.NET MVC5 website developed in Visual Studio 2015 Community Edition
 * To run the site just download the solution in Visual Studio, build it and run it to use the application in a web browser
-* The solution contains a set of unit tests implemented using NUNit
-* Also, the solution uses NLog for logging operations. Please make sure before running the application that you specify a valid path for the log on the NLog.config file
+* The solution contains a set of unit tests implemented using NUnit
+* Also, the solution uses NLog for logging operations. Please make sure before running the application that you specify a valid path for the log output on the NLog.config file
 
 
 ####What I am pleased with about my implementation
 
 * First of all, the implementation does fullfil the criteria in terms of input and output values
-* I think I've achieved a decent separationof concerns between the generation of the prime numbers by an implemented algorith in code (not from a library, as requested) and then the presentation of the table result
+* I think I've achieved a decent separation of concerns between the generation of the prime numbers by an implemented algorith in code (not from a library, as requested) and then the presentation of the table result
 * I initially wanted to implement a solution that would not involve constructing a two-dimensional array of numbers (containing all the data for the final table to be displayed) and would only have to deal with a single array of numbers instead. This should save quite a bit of memory when going for high numbers as we would only need to store N numbers in memory as opposed to N^2. I think I've managed to achieve that with my implementation
-* Some caching refinements in the algorith and the controller should help in improving performance
+* Some caching refinements that I later added into the algorithm and the controller should help in improving performance comparing to the initial implementation
 * There is some basic logging in place too, which would help to evaluate performance based on the lenght of time the logged processes take to run and the input provided. Apart from the obvious monitoring benefits for the application
 * The unit tests added should cover the most relevant parts of the functionality
 * The data annotations and client validation capabilities provided by ASP.NET MVC5 out of the box make easy to take care of those parts  wthout having to implement much custom logic to validate the input values, so it made sense to make use of it instead of going for other approaches (a console app for example) in which some additional custom validation logic and effort may be required
@@ -54,7 +54,8 @@ In the above example the 2nd prime number is 3 and the 3rd prime number is 5. So
 
 ####What I would do if I had more time
 
-* As soon as I managed to render the table, I realized that the most obvious challenge would be on the presentation of this data. If it only were about displaying the first few prime numbers then it should be much easier, but when going into the hundreds of primes then we're talking about starting to require rendering a grid of tens of thousands of cells and makes the rendering of the grid much slower. So there must be a practical limit on the number of primes that the front-end should handle before going for a different approach to present the data
+* As soon as I managed to render the table, I realized that the most obvious challenge would be on the presentation of this data. If it only were about displaying the first few prime numbers then it should be much easier, but when going into the hundreds of primes then we're talking about starting to require rendering a grid of tens of thousands of cells and that makes the rendering of the grid much slower. So even though the prime generation algorithm handles much bigger numbers, there must be a practical and fairly low limit on the number of primes that the front-end presentation should handle before going for a different approach to present the data. I've therefore limited the input value to calculate up to the first 500 prime numbers by default. But even that amount makes the browser to take a beating when rendering it on my implementation
+* Taking this into consideration, a notification message alerting the user that the process is happening for when we're dealing with high numbers could be a good idea too
 * Probably moving most or all the logic to render the data on the browser to a client-side level with some Javascript could result in important performance benefits
 * Generating a text file with the table and return this file on the response could be an option which I have not explored for when numbers start to get too big to be displayed on the browser, and it could be a valid alternative or an improvement on the presentation level
 * In terms of the prime numbers generation algorithm, upon some quick research there seem to be quite a few mathematical options to tackle this problem but very often they're presented in the form of "how to calculate all the existing prime numbers up to a given N number" (in which you know your search limit but do not know how many prime numbers you'll get) as opposed to how to calculate all the prime numbers up to the Nth prime (in which you know how many prime numbers you should get but do not know the limit you need to go to in order to get them), which is was this exercise required. Therefore, implementing algoriths like the well known Sieve of Eratosthenes, which seems to be very good at giving you all primes up to a N number, didn't quite fit the required scenario here.
