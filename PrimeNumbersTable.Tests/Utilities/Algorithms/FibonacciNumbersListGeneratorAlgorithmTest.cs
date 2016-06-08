@@ -42,6 +42,17 @@ namespace PrimeNumbersTable.Tests.Utilities.Algorithms
             // Assert
             Assert.That(fibonacciNumbers.Length, Is.EqualTo(lengthExpected));
         }
+
+        [Test]
+        public void test_that_the_first_two_elements_of_the_list_are_equal_to_one()
+        {
+            // Act
+            var fibonacciNumbers = _algorithm.GetListOfFirstNFibonacciNumbers(5);
+
+            // Assert
+            Assert.That(fibonacciNumbers[0], Is.EqualTo(1));
+            Assert.That(fibonacciNumbers[1], Is.EqualTo(1));
+        }
     }
 
     public interface IFibonacciNumbersListGeneratorAlgorithm
