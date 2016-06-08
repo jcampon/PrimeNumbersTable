@@ -14,14 +14,14 @@ namespace PrimeNumbersTable.Web.Controllers
 {
     public partial class PrimeNumbersTableController : Controller
     {
-        private readonly IPrimeNumbersService _primeNumbersService;
+        private readonly IFibonacciNumbersService _numbersService;
         private static Logger _logger = LogManager.GetCurrentClassLogger();
 
         private int BiggestInputNumberAllowed = GetBiggestInputNumberAllowed();
 
-        public PrimeNumbersTableController(IPrimeNumbersService primeNumbersService)
+        public PrimeNumbersTableController(IFibonacciNumbersService numbersService)
         {
-            this._primeNumbersService = primeNumbersService;
+            this._numbersService = numbersService;
         }
 
         [OutputCache(Duration = 30, VaryByParam = "totalOfPrimeNumbers")]
@@ -34,7 +34,7 @@ namespace PrimeNumbersTable.Web.Controllers
                 _logger.Debug("Creating the PrimeNumbersTableDisplayModel in the controller");
                 var primeNumbersTableDisplayModel = new PrimeNumbersTableDisplayModel(totalOfPrimeNumbers)
                 {
-                    ListOfPrimeNumbers = this._primeNumbersService.GetListOfPrimeNumbers(totalOfPrimeNumbers)
+                    ListOfPrimeNumbers = this._numbersService.GetListOfFibonacciNumbers(totalOfPrimeNumbers)
                 };
 
                 _logger.Debug("Returning the Generate view");
