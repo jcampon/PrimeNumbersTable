@@ -66,7 +66,7 @@ namespace PrimeNumbersTable.Tests.Utilities.Algorithms
         {
             var listOfFibonacciNumbers = InitializeListOfFibonacciNumbers(totalOfNumbersExpected);
 
-            return new int[totalOfNumbersExpected];
+            return listOfFibonacciNumbers;
         }
 
         private int[] InitializeListOfFibonacciNumbers(int totalOfNumbersExpected)
