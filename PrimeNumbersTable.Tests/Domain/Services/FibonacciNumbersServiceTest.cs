@@ -21,4 +21,17 @@ namespace PrimeNumbersTable.Tests.Domain.Services
             this.ServiceMock = new Mock<IFibonacciNumbersService>();
         }
     }
+
+    [TestFixture]
+    public class and_getting_a_list_of_fibonacci_numbers : when_working_with_the_FibonacciNumbersService
+    {
+        [Test]
+        public void then_the_list_returned_contains_the_expected_number_of_elements()
+        {
+            // Assert
+            Assert.That(listOfNumbersGenerated, Is.Not.Null);
+            Assert.That(listOfNumbersGenerated.Length, Is.EqualTo(totalOfNumbersExpected));
+        }
+    }
+
 }
