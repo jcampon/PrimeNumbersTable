@@ -13,7 +13,18 @@ namespace PrimeNumbersTable.Tests.Utilities.Algorithms
             var algorithm = new FibonacciNumbersListGeneratorAlgorithm();
 
             // Assert
-            Assert.That(algorithm, Is.InstanceOf<IFibonacciNumbersListGeneratorAlgorithm>);
+            Assert.IsInstanceOf<IFibonacciNumbersListGeneratorAlgorithm>(algorithm);
         }
     }
+
+    public interface IFibonacciNumbersListGeneratorAlgorithm
+    {
+
+    }
+
+    public class FibonacciNumbersListGeneratorAlgorithm
+    {
+
+    }
+
 }
