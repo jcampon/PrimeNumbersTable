@@ -30,6 +30,16 @@ namespace PrimeNumbersTable.Tests.Utilities.Algorithms
             // Assert
             Assert.That(fibonacciNumbers, Is.InstanceOf(typeof(int[])));
         }
+
+        [Test]
+        public void test_that_the_returned_array_length_is_equal_to_the_total_of_numbers_expected()
+        {
+            // Act
+            var fibonacciNumbers = _algorithm.GetListOfFirstNFibonacciNumbers(5);
+
+            // Assert
+            Assert.That(fibonacciNumbers.Length, Is.EqualTo(5));
+        }
     }
 
     public interface IFibonacciNumbersListGeneratorAlgorithm
