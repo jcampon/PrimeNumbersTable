@@ -9,14 +9,21 @@ namespace PrimeNumbersTable.Web.Domain.Services
 {
     public interface IFibonacciNumbersService
     {
-        int[] GetListOfFibonacciNumbers(int totalOfPrimeNumbers);
+        int[] GetListOfFibonacciNumbers(int totalOfFibonacciNumbers);
     }
 
     class FibonacciNumbersService : IFibonacciNumbersService
     {
-        public int[] GetListOfFibonacciNumbers(int totalOfPrimeNumbers)
-        { 
-            return new int[totalOfPrimeNumbers];
+        private readonly IFibonacciNumbersListGeneratorAlgorithm _algorithm;
+
+        public FibonacciNumbersService(IFibonacciNumbersListGeneratorAlgorithm algorithm)
+        {
+            this._algorithm = algorithm;
+        }
+
+        public int[] GetListOfFibonacciNumbers(int totalOfFibonacciNumbers)
+        {
+            return this._algorithm.GetListOfFirstNFibonacciNumbers(totalOfFibonacciNumbers);
         }
     }
 }
