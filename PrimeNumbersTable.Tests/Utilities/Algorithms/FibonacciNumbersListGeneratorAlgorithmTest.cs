@@ -53,6 +53,17 @@ namespace PrimeNumbersTable.Tests.Utilities.Algorithms
             Assert.That(fibonacciNumbers[0], Is.EqualTo(1));
             Assert.That(fibonacciNumbers[1], Is.EqualTo(1));
         }
+
+        [Test]
+        public void test_that_a_given_element_of_the_list_greater_than_the_second_is_the_sum_of_the_previous_two_elements()
+        {
+            // Act
+            var fibonacciNumbers = _algorithm.GetListOfFirstNFibonacciNumbers(5);
+
+            // Assert
+            Assert.That(fibonacciNumbers[4], Is.GreaterThan(0));
+            Assert.That(fibonacciNumbers[4], Is.EqualTo(fibonacciNumbers[3] + fibonacciNumbers[2]));
+        }
     }
 
     public interface IFibonacciNumbersListGeneratorAlgorithm
