@@ -73,23 +73,34 @@ namespace PrimeNumbersTable.Tests.Utilities.Algorithms
 
     public class FibonacciNumbersListGeneratorAlgorithm : IFibonacciNumbersListGeneratorAlgorithm
     {
+        private int[] _listOfFibonacciNumbers;
+
         public int[] GetListOfFirstNFibonacciNumbers(int totalOfNumbersExpected)
         {
-            var listOfFibonacciNumbers = InitializeListOfFibonacciNumbers(totalOfNumbersExpected);
+            InitializeListOfFibonacciNumbers(totalOfNumbersExpected);
 
-            return listOfFibonacciNumbers;
+            for (var positionOnTheList = 2; positionOnTheList < totalOfNumbersExpected; positionOnTheList++)
+            {
+                CalculateValueFor(positionOnTheList);
+            }
+
+            return _listOfFibonacciNumbers;
         }
 
-        private int[] InitializeListOfFibonacciNumbers(int totalOfNumbersExpected)
+        private void CalculateValueFor(int positionOnTheList)
         {
-            var listOfFibonacciNumbers = new int[totalOfNumbersExpected];
+            _listOfFibonacciNumbers[positionOnTheList] =
+                _listOfFibonacciNumbers[positionOnTheList - 1] + _listOfFibonacciNumbers[positionOnTheList - 2];
+        }
 
-            listOfFibonacciNumbers[0] = 1;
+        private void InitializeListOfFibonacciNumbers(int totalOfNumbersExpected)
+        {
+            _listOfFibonacciNumbers = new int[totalOfNumbersExpected];
+
+            _listOfFibonacciNumbers[0] = 1;
 
             if (totalOfNumbersExpected >= 2)
-                listOfFibonacciNumbers[1] = 1;
-
-            return listOfFibonacciNumbers;
+                _listOfFibonacciNumbers[1] = 1;
         }
 
     }
