@@ -32,13 +32,15 @@ namespace PrimeNumbersTable.Tests.Utilities.Algorithms
         }
 
         [Test]
-        public void test_that_the_returned_array_length_is_equal_to_the_total_of_numbers_expected()
+        [TestCase(1, 1)]
+        [TestCase(5, 5)]
+        public void test_that_the_returned_array_length_is_equal_to_the_total_of_numbers_expected(int inputProvided, int lengthExpected)
         {
             // Act
-            var fibonacciNumbers = _algorithm.GetListOfFirstNFibonacciNumbers(5);
+            var fibonacciNumbers = _algorithm.GetListOfFirstNFibonacciNumbers(inputProvided);
 
             // Assert
-            Assert.That(fibonacciNumbers.Length, Is.EqualTo(5));
+            Assert.That(fibonacciNumbers.Length, Is.EqualTo(lengthExpected));
         }
     }
 
