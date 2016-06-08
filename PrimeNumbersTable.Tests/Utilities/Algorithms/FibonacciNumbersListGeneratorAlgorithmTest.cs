@@ -51,7 +51,7 @@ namespace PrimeNumbersTable.Tests.Utilities.Algorithms
     {
         public int[] GetListOfFirstNFibonacciNumbers(int totalOfNumbersExpected)
         {
-            return new int[] {}; 
+            return new int[totalOfNumbersExpected]; 
         }
     }
 
