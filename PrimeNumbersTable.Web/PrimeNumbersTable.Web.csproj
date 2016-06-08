@@ -178,6 +178,7 @@
       <DependentUpon>T4MVC.tt</DependentUpon>
     </Compile>
     <Compile Include="Utilities\Algorithms\BasicPrimeNumbersListGeneratorAlgorithm.cs" />
+    <Compile Include="Utilities\Algorithms\FibonacciNumbersListGeneratorAlgorithm.cs" />
     <Compile Include="Utilities\Algorithms\IPrimeNumbersListGeneratorAlgorithm.cs" />
   </ItemGroup>
   <ItemGroup>
