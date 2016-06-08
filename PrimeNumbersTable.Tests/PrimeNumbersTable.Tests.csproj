@@ -94,6 +94,7 @@
     <Compile Include="Domain\Services\PrimeNumbersServiceTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Controllers\HomeControllerTest.cs" />
+    <Compile Include="Utilities\Algorithms\FibonacciNumbersListGeneratorAlgorithmTest.cs" />
     <Compile Include="Utilities\Algorithms\PrimeNumbersListGeneratorAlgorithmTest.cs" />
   </ItemGroup>
   <ItemGroup>
