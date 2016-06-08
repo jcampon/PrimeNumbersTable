@@ -15,6 +15,14 @@ namespace PrimeNumbersTable.Tests.Utilities.Algorithms
             // Assert
             Assert.IsInstanceOf<IFibonacciNumbersListGeneratorAlgorithm>(algorithm);
         }
+
+        [Test]
+        public void test_that_the_GetListOfFirstNFibonacciNumbers_method_returns_an_array_of_int()
+        {
+            
+            // Assert
+            Assert.That(fibonacciNumbers, Is.InstanceOf(typeof(int[])));
+        }
     }
 
     public interface IFibonacciNumbersListGeneratorAlgorithm
