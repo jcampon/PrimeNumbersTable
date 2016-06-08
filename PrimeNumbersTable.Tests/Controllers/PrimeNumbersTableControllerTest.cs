@@ -15,7 +15,7 @@ namespace PrimeNumbersTable.Tests.Controllers
     [TestFixture]
     public class PrimeNumbersTableControllerTest
     {
-        private Mock<IPrimeNumbersService> _primeNumbersServiceMock;
+        private Mock<IFibonacciNumbersService> _numbersServiceMock;
         private PrimeNumbersTableController _controller;
 
         private const int ValidProvidedNumberOfPrimes = 5;
@@ -24,10 +24,10 @@ namespace PrimeNumbersTable.Tests.Controllers
         [SetUp]
         public void SetUpTestFixture()
         {
-            this._primeNumbersServiceMock = new Mock<IPrimeNumbersService>();
+            this._numbersServiceMock = new Mock<IFibonacciNumbersService>();
             SetUpGetListOfPrimeNumbersMethodForServiceMock(ValidProvidedNumberOfPrimes);
 
-            this._controller = new PrimeNumbersTableController(this._primeNumbersServiceMock.Object);
+            this._controller = new PrimeNumbersTableController(this._numbersServiceMock.Object);
         }
 
         [Test]
@@ -59,7 +59,7 @@ namespace PrimeNumbersTable.Tests.Controllers
         {
             var listOfNumbers = new int[totalOfNumbers];
 
-            this._primeNumbersServiceMock.Setup(x => x.GetListOfPrimeNumbers(totalOfNumbers)).Returns(listOfNumbers);
+            this._numbersServiceMock.Setup(x => x.GetListOfFibonacciNumbers(totalOfNumbers)).Returns(listOfNumbers);
         }
 
         private ViewResult ReturnViewResultForTheGenerateActionMethod()
