@@ -55,14 +55,18 @@ namespace PrimeNumbersTable.Tests.Utilities.Algorithms
         }
 
         [Test]
-        public void test_that_a_given_element_of_the_list_greater_than_the_second_is_the_sum_of_the_previous_two_elements()
+        [TestCase(20, 2)]
+        [TestCase(20, 10)]
+        [TestCase(20, 19)]
+        public void test_that_a_given_element_of_the_list_greater_than_the_second_is_the_sum_of_the_previous_two_elements(int lengthOfList, int arrayItemToValidate)
         {
             // Act
-            var fibonacciNumbers = _algorithm.GetListOfFirstNFibonacciNumbers(5);
+            var fibonacciNumbers = _algorithm.GetListOfFirstNFibonacciNumbers(lengthOfList);
 
             // Assert
-            Assert.That(fibonacciNumbers[4], Is.GreaterThan(0));
-            Assert.That(fibonacciNumbers[4], Is.EqualTo(fibonacciNumbers[3] + fibonacciNumbers[2]));
+            Assert.That(fibonacciNumbers[arrayItemToValidate], Is.GreaterThan(0));
+            Assert.That(fibonacciNumbers[arrayItemToValidate], Is.EqualTo(fibonacciNumbers[arrayItemToValidate - 1] + 
+                                                                          fibonacciNumbers[arrayItemToValidate - 2]));
         }
     }
 
