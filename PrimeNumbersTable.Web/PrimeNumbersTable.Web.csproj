@@ -164,7 +164,7 @@
     <Compile Include="HomeController.generated.cs">
       <DependentUpon>T4MVC.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\PrimeNumbersTableDisplayModel.cs" />
+    <Compile Include="Models\NumbersTableDisplayModel.cs" />
     <Compile Include="Models\UserInputDisplayModel.cs" />
     <Compile Include="PrimeNumbersTableController.generated.cs">
       <DependentUpon>T4MVC.tt</DependentUpon>

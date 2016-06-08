@@ -47,10 +47,10 @@ namespace PrimeNumbersTable.Tests.Controllers
             var result = ReturnViewResultForTheGenerateActionMethod();
 
             // Assert
-            Assert.That(result.Model, Is.InstanceOf(typeof(PrimeNumbersTableDisplayModel)));
-            Assert.That((result.Model as PrimeNumbersTableDisplayModel).ListOfPrimeNumbers, Is.Not.Null);
-            Assert.That((result.Model as PrimeNumbersTableDisplayModel).ListOfPrimeNumbers.Any, Is.True);
-            Assert.That((result.Model as PrimeNumbersTableDisplayModel).TotalOfPrimeNumbers, Is.GreaterThanOrEqualTo(MinimumRequiredNumberOfPrimes));
+            Assert.That(result.Model, Is.InstanceOf(typeof(NumbersTableDisplayModel)));
+            Assert.That((result.Model as NumbersTableDisplayModel).ListOfNumbers, Is.Not.Null);
+            Assert.That((result.Model as NumbersTableDisplayModel).ListOfNumbers.Any, Is.True);
+            Assert.That((result.Model as NumbersTableDisplayModel).TotalOfNumbers, Is.GreaterThanOrEqualTo(MinimumRequiredNumberOfPrimes));
         }
 
         #region private helper methods

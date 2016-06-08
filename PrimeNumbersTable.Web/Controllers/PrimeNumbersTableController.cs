@@ -32,9 +32,9 @@ namespace PrimeNumbersTable.Web.Controllers
             if (ModelState.IsValid)
             {
                 _logger.Debug("Creating the PrimeNumbersTableDisplayModel in the controller");
-                var primeNumbersTableDisplayModel = new PrimeNumbersTableDisplayModel(totalOfPrimeNumbers)
+                var primeNumbersTableDisplayModel = new NumbersTableDisplayModel(totalOfPrimeNumbers)
                 {
-                    ListOfPrimeNumbers = this._numbersService.GetListOfFibonacciNumbers(totalOfPrimeNumbers)
+                    ListOfNumbers = this._numbersService.GetListOfFibonacciNumbers(totalOfPrimeNumbers)
                 };
 
                 _logger.Debug("Returning the Generate view");

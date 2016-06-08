@@ -9,7 +9,7 @@
 
 <div class="row">
 
-    <h3>Table of the first @Model.TotalOfPrimeNumbers prime numbers</h3>
+    <h3>Table of the first @Model.totalOfNumbers prime numbers</h3>
 
     @RenderPrimeNumbersTable()
 
@@ -24,7 +24,7 @@
         @RenderFirstRow()
 
         <!-- Successive rows here -->
-        @for (var rowCount = 0; rowCount < Model.TotalOfPrimeNumbers; rowCount++)
+        @for (var rowCount = 0; rowCount < Model.totalOfNumbers; rowCount++)
         {
             @RenderRow(rowCount)
         }
@@ -38,9 +38,9 @@
         @RenderTopLeftCell()
 
         <!-- Successive cells, containing the whole array of prime numbers, goes here -->
-        @for (var i = 0; i < Model.TotalOfPrimeNumbers; i++)
+        @for (var i = 0; i < Model.totalOfNumbers; i++)
         {
-            @RenderCellValue(Model.ListOfPrimeNumbers[i])
+            @RenderCellValue(Model.ListOfNumbers[i])
         }
     </tr>
 }
@@ -49,12 +49,12 @@
 {
     <tr>
         <!-- First cell of each row, containing every number on the array of primes, goes here -->
-        @RenderCellValue(Model.ListOfPrimeNumbers[rowCount])
+        @RenderCellValue(Model.ListOfNumbers[rowCount])
 
         <!-- Successice cells of each row, which will contain the product of the primes, go here -->
-        @for (var colCount = 0; colCount < Model.TotalOfPrimeNumbers; colCount++)
+        @for (var colCount = 0; colCount < Model.totalOfNumbers; colCount++)
         {
-            @RenderCellValue(Model.ListOfPrimeNumbers[rowCount] * Model.ListOfPrimeNumbers[colCount])
+            @RenderCellValue(Model.ListOfNumbers[rowCount] * Model.ListOfNumbers[colCount])
         }
     </tr>
 }
