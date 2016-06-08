@@ -64,8 +64,23 @@ namespace PrimeNumbersTable.Tests.Utilities.Algorithms
     {
         public int[] GetListOfFirstNFibonacciNumbers(int totalOfNumbersExpected)
         {
-            return new int[totalOfNumbersExpected]; 
+            var listOfFibonacciNumbers = InitializeListOfFibonacciNumbers(totalOfNumbersExpected);
+
+            return new int[totalOfNumbersExpected];
         }
+
+        private int[] InitializeListOfFibonacciNumbers(int totalOfNumbersExpected)
+        {
+            var listOfFibonacciNumbers = new int[totalOfNumbersExpected];
+
+            listOfFibonacciNumbers[0] = 1;
+
+            if (totalOfNumbersExpected >= 2)
+                listOfFibonacciNumbers[1] = 1;
+
+            return listOfFibonacciNumbers;
+        }
+
     }
 
 }
