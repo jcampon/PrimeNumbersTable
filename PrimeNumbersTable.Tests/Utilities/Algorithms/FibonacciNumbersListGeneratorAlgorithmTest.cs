@@ -22,7 +22,7 @@ namespace PrimeNumbersTable.Tests.Utilities.Algorithms
 
     }
 
-    public class FibonacciNumbersListGeneratorAlgorithm
+    public class FibonacciNumbersListGeneratorAlgorithm : IFibonacciNumbersListGeneratorAlgorithm
     {
 
     }
