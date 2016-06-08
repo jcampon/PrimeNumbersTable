@@ -28,9 +28,23 @@ namespace PrimeNumbersTable.Tests.Domain.Services
         [Test]
         public void then_the_list_returned_contains_the_expected_number_of_elements()
         {
+            // Arrange
+            var totalOfNumbersExpected = 7;
+            SetUpGetListOfFibonacciNumbersMethod(totalOfNumbersExpected);
+
+            // Act
+            var listOfNumbersGenerated = base.ServiceMock.Object.GetListOfFibonacciNumbers(totalOfNumbersExpected);
+
             // Assert
             Assert.That(listOfNumbersGenerated, Is.Not.Null);
             Assert.That(listOfNumbersGenerated.Length, Is.EqualTo(totalOfNumbersExpected));
+        }
+
+        private void SetUpGetListOfFibonacciNumbersMethod(int totalOfNumbers)
+        {
+            var listOfNumbers = new int[totalOfNumbers];
+
+            ServiceMock.Setup(x => x.GetListOfFibonacciNumbers(totalOfNumbers)).Returns(listOfNumbers);
         }
     }
 
