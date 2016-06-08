@@ -9,7 +9,11 @@ namespace PrimeNumbersTable.Tests.Utilities.Algorithms
         [Test]
         public void test_that_the_algorithm_instance_implements_the_IFibonacciNumbersListGeneratorAlgorithm_interface()
         {
+            // Arrange
+            var algorithm = new FibonacciNumbersListGeneratorAlgorithm();
 
+            // Assert
+            Assert.That(algorithm, Is.InstanceOf<IFibonacciNumbersListGeneratorAlgorithm>);
         }
     }
 }
