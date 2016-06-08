@@ -19,7 +19,12 @@ namespace PrimeNumbersTable.Tests.Utilities.Algorithms
         [Test]
         public void test_that_the_GetListOfFirstNFibonacciNumbers_method_returns_an_array_of_int()
         {
-            
+            // Arrange
+            var algorithm = new FibonacciNumbersListGeneratorAlgorithm();
+
+            // Act
+            var fibonacciNumbers = algorithm.GetListOfFirstNFibonacciNumbers(5);
+
             // Assert
             Assert.That(fibonacciNumbers, Is.InstanceOf(typeof(int[])));
         }
@@ -27,12 +32,15 @@ namespace PrimeNumbersTable.Tests.Utilities.Algorithms
 
     public interface IFibonacciNumbersListGeneratorAlgorithm
     {
-
+        int[] GetListOfFirstNFibonacciNumbers(int totalOfNumbersExpected);
     }
 
     public class FibonacciNumbersListGeneratorAlgorithm : IFibonacciNumbersListGeneratorAlgorithm
     {
-
+        public int[] GetListOfFirstNFibonacciNumbers(int totalOfNumbersExpected)
+        {
+            return new int[] {}; 
+        }
     }
 
 }
