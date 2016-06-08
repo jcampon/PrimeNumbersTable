@@ -234,3 +234,6 @@ _Pvt_Extensions
 
 # FAKE - F# Make
 .fake/
+PrimeNumbersTable.Tests/PrimeNumbersTable.Tests.v2.ncrunchproject
+PrimeNumbersTable.Web/PrimeNumbersTable.Web.v2.ncrunchproject
+PrimeNumbersTable.v2.ncrunchsolution
