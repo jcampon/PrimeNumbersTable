@@ -16,5 +16,10 @@ namespace PrimeNumbersTable.Web.Models
 
         public int TotalOfNumbers { get; private set; }
         public int[] ListOfNumbers { get; set; }
+
+        public int GetValueToRenderInTableCell(int indexOfRowArrayElement, int indexOfColumnArrayElement)
+        {
+            return ListOfNumbers[indexOfRowArrayElement] * ListOfNumbers[indexOfColumnArrayElement];
+        }
     }
 }

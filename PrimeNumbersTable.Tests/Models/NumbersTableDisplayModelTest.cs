@@ -18,7 +18,7 @@ namespace PrimeNumbersTable.Tests.Models
             viewModel.ListOfNumbers = new int[] {1, 2, 3, 4, 5};
 
             // Act
-            actualProductOfNumbers = viewModel.GetValueToRenderInTableCell(1, 4); 
+            var actualProductOfNumbers = viewModel.GetValueToRenderInTableCell(1, 4); 
 
             // Assert
             Assert.That(actualProductOfNumbers, Is.EqualTo(10)); // We should get 2 * 5 = 10
