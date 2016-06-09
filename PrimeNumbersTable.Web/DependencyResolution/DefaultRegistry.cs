@@ -37,6 +37,7 @@ namespace PrimeNumbersTable.Web.DependencyResolution {
             For<IPrimeNumbersListGeneratorAlgorithm>().Use<BasicPrimeNumbersListGeneratorAlgorithm>();
 
             For<IFibonacciNumbersService>().Use<FibonacciNumbersService>();
+            For<IFibonacciNumbersListGeneratorAlgorithm>().Use<FibonacciNumbersListGeneratorAlgorithm>();
         }
 
         #endregion

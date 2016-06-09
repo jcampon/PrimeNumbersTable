@@ -54,7 +54,7 @@
         <!-- Successice cells of each row, which will contain the product of the primes, go here -->
         @for (var colCount = 0; colCount < Model.TotalOfNumbers; colCount++)
         {
-            @RenderCellValue(Model.ListOfNumbers[rowCount] * Model.ListOfNumbers[colCount])
+            @RenderCellValue(Model.GetValueToRenderInTableCell(rowCount, colCount))
         }
     </tr>
 }
