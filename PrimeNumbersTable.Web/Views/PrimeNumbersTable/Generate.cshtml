@@ -1,7 +1,7 @@
 ﻿@using PrimeNumbersTable.Web.Models
 @using PrimeNumbersTable.Web.Utilities;
 
-@model PrimeNumbersTable.Web.Models.PrimeNumbersTableDisplayModel
+@model PrimeNumbersTable.Web.Models.NumbersTableDisplayModel
 
 @{
     ViewBag.Title = "Display";
@@ -9,7 +9,7 @@
 
 <div class="row">
 
-    <h3>Table of the first @Model.totalOfNumbers prime numbers</h3>
+    <h3>Table of the first @Model.TotalOfNumbers numbers</h3>
 
     @RenderPrimeNumbersTable()
 
@@ -24,7 +24,7 @@
         @RenderFirstRow()
 
         <!-- Successive rows here -->
-        @for (var rowCount = 0; rowCount < Model.totalOfNumbers; rowCount++)
+        @for (var rowCount = 0; rowCount < Model.TotalOfNumbers; rowCount++)
         {
             @RenderRow(rowCount)
         }
@@ -38,7 +38,7 @@
         @RenderTopLeftCell()
 
         <!-- Successive cells, containing the whole array of prime numbers, goes here -->
-        @for (var i = 0; i < Model.totalOfNumbers; i++)
+        @for (var i = 0; i < Model.TotalOfNumbers; i++)
         {
             @RenderCellValue(Model.ListOfNumbers[i])
         }
@@ -52,7 +52,7 @@
         @RenderCellValue(Model.ListOfNumbers[rowCount])
 
         <!-- Successice cells of each row, which will contain the product of the primes, go here -->
-        @for (var colCount = 0; colCount < Model.totalOfNumbers; colCount++)
+        @for (var colCount = 0; colCount < Model.TotalOfNumbers; colCount++)
         {
             @RenderCellValue(Model.ListOfNumbers[rowCount] * Model.ListOfNumbers[colCount])
         }

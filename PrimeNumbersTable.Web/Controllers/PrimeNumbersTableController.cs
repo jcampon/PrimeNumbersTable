@@ -24,31 +24,31 @@ namespace PrimeNumbersTable.Web.Controllers
             this._numbersService = numbersService;
         }
 
-        [OutputCache(Duration = 30, VaryByParam = "totalOfPrimeNumbers")]
-        public virtual ActionResult Generate(int totalOfPrimeNumbers)
+        [OutputCache(Duration = 30, VaryByParam = "totalOfNumbers")]
+        public virtual ActionResult Generate(int totalOfNumbers)
         {
-            ValidateInput(totalOfPrimeNumbers);
+            ValidateInput(totalOfNumbers);
 
             if (ModelState.IsValid)
             {
                 _logger.Debug("Creating the PrimeNumbersTableDisplayModel in the controller");
-                var primeNumbersTableDisplayModel = new NumbersTableDisplayModel(totalOfPrimeNumbers)
+                var primeNumbersTableDisplayModel = new NumbersTableDisplayModel(totalOfNumbers)
                 {
-                    ListOfNumbers = this._numbersService.GetListOfFibonacciNumbers(totalOfPrimeNumbers)
+                    ListOfNumbers = this._numbersService.GetListOfFibonacciNumbers(totalOfNumbers)
                 };
 
                 _logger.Debug("Returning the Generate view");
                 return View(primeNumbersTableDisplayModel);
             }
 
-            return RedirectToAction(MVC.Home.Index());
+            return RedirectToAction("Index", "Home");
         }
 
         private void ValidateInput(int totalOfPrimeNumbers)
         {
             if (totalOfPrimeNumbers <= 0 || totalOfPrimeNumbers > BiggestInputNumberAllowed)
             {
-                ModelState.AddModelError(MVC.PrimeNumbersTable.GenerateParams.totalOfPrimeNumbers, 
+                ModelState.AddModelError("totalOfPrimeNumbers", 
                                          "Error: the value provided must be a number between 1 and " + BiggestInputNumberAllowed);
             }
         }

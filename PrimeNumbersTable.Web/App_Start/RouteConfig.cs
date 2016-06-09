@@ -14,12 +14,12 @@ namespace PrimeNumbersTable.Web
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
             routes.MapRoute(
-                MVC.PrimeNumbersTable.Name,
-                "primenumberstable/generate/{totalOfPrimeNumbers}",
+                "PrimeNumbersTable",
+                "primenumberstable/generate/{totalOfNumbers}",
                 new
                 {
-                    controller = MVC.PrimeNumbersTable.Name,
-                    action = MVC.PrimeNumbersTable.ActionNames.Generate
+                    controller = "PrimeNumbersTable",
+                    action = "Generate"
                 }
                 //,new { totalOfPrimeNumbers = @"\d+" }
             );

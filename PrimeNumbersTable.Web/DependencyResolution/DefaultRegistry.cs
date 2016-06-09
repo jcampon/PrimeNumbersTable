@@ -15,6 +15,7 @@
 // </copyright>
 // --------------------------------------------------------------------------------------------------------------------
 
+using PrimeNumbersTable.Web.Domain.Services;
 using PrimeNumbersTable.Web.Utilities;
 using PrimeNumbersTable.Web.Utilities.Algorithms;
 
@@ -34,6 +35,8 @@ namespace PrimeNumbersTable.Web.DependencyResolution {
                 });
             
             For<IPrimeNumbersListGeneratorAlgorithm>().Use<BasicPrimeNumbersListGeneratorAlgorithm>();
+
+            For<IFibonacciNumbersService>().Use<FibonacciNumbersService>();
         }
 
         #endregion
